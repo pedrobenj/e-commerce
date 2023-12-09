@@ -24,6 +24,12 @@ function carregarProdutos() {
     )
 }
 
+document.getElementById('lightbulb').addEventListener('click', ativarDarkMode)
+
+function ativarDarkMode() {
+    document.getElementById('corpo').classList.add('dark-mode')
+}
+
 // function listarProdutos(){
 
 //     for (let i = 0; i <= 10; i++) {
