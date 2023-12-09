@@ -1,6 +1,35 @@
 let lista = document.getElementById('lista');
 window.addEventListener('load', carregarProdutos);
 
+
+function carregarSite() {
+    carregarProdutos();
+    carregarDarkMode();
+}
+
+function carregarDarkMode() {
+    let status = localStorage.getItem('darkMode')
+    if (status == 'ativado') {
+        document.getElementById('corpo').classList.add('dark-mode')
+    } else {
+        document.getElementById('corpo').classList.remove('dark-mode')
+    }
+}
+
+document.getElementById('lightbulb').addEventListener('click', interruptor);
+
+function interruptor() {
+    let status = localStorage.getItem('darkMode');
+
+    if (status == 'ativado') {
+        document.getElementById('corpo').classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'desativado');
+    } else {
+        document.getElementById('corpo').classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'ativado');
+    }
+}
+
 function carregarProdutos() {
     fetch(`https://run.mocky.io/v3/9880c66d-a366-4248-8142-0f13111c0f0c`)
     .then((response) => response.json())
@@ -24,11 +53,9 @@ function carregarProdutos() {
     )
 }
 
-document.getElementById('lightbulb').addEventListener('click', ativarDarkMode)
 
-function ativarDarkMode() {
-    document.getElementById('corpo').classList.add('dark-mode')
-}
+
+
 
 // function listarProdutos(){
 
